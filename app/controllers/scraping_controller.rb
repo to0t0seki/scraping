@@ -50,7 +50,7 @@ class ScrapingController < ApplicationController
             
             @machine_name = elements = current_page.search(".name").inner_text
             @hall_name = elements = current_page.search(".store-ttl").inner_text
-            @update_time = elements = current_page.search(".latest").inner_text
+            @update_time = elements = current_page.search(".latest").inner_text.gsub("データ更新日時：","")
             
             
             
