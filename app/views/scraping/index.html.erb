@@ -1,5 +1,24 @@
 <div>
     <%= form_tag('/scraping/jag', method: :get) do %>
+    <select name="hall">
+        <option value="00041817">ミノアサ</option>
+        <option value="00041615">イナアサ</option>
+        <option value="00041814">インディ</option>
+        <!--<option value="00041955">マルイ</option>-->
+    </select>
+     <select name="machine">
+        <option value="215060005">マイジャグラー3</option>
+        <option value="218050009">マイジャグラー4</option>
+        <option value="215030001">ゴーゴージャグラー</option>
+        <option value="219030001">ゴーゴージャグラー2</option>
+        <option value="216060004">ファンキージャグラー</option>
+        <option value="217050006">スーパーミラクルジャグラー</option>
+    </select>
+    <select name="date">
+        <option value="0"><%=@today%></option>
+        <option value="1"><%=@today-1%></option>
+        <option value="2"><%=@today-2%></option>
+    </select>
     <input type="submit" value="SEND">
   <% end %>
 </div>
