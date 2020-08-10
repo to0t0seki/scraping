@@ -7,12 +7,14 @@ class ScrapingController < ApplicationController
     
     def jag
        
+       
   
                 #  binding.pry
         categries = ["81/1","1/0","2/0","6/0"]
         @jag = {}
         @total = []
         @ave = []
+        
         agent = Mechanize.new
         
         for category in categries do
@@ -23,7 +25,6 @@ class ScrapingController < ApplicationController
             current_page = agent.get("https://papimo.jp/h/"+params[:hall]+"/hit/index_sort/"+params[:machine]+"/1-20-279176/" + category)
             rescue WWW::Mechanize::ResponseCodeError => e
                 puts error
-                  binding.pry
             end
              
             elements = current_page.search("#table-sort tbody tr")
@@ -46,6 +47,12 @@ class ScrapingController < ApplicationController
                     @jag[key] = array
                 end
             end
+            
+            @machine_name = elements = current_page.search(".name").inner_text
+            @hall_name = elements = current_page.search(".store-ttl").inner_text
+            @update_time = elements = current_page.search(".latest").inner_text
+            
+            
             
         end
         
